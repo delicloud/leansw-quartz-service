@@ -10,3 +10,5 @@ eureka:
       defaultZone: http://eureka-server:8761/eureka/
   instance:
     preferIpAddress: true
+
+spring.thymeleaf.cache: false
