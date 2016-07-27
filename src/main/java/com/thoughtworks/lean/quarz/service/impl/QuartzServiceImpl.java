@@ -4,7 +4,7 @@ import com.thoughtworks.lean.quarz.domain.JobCreateDto;
 import com.thoughtworks.lean.quarz.domain.JobDeleteTto;
 import com.thoughtworks.lean.quarz.domain.JobDetailDto;
 import com.thoughtworks.lean.quarz.exception.ServiceErrorException;
-import com.thoughtworks.lean.quarz.job.LogJob;
+import com.thoughtworks.lean.quarz.job.JobType;
 import com.thoughtworks.lean.quarz.service.JobService;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -70,7 +71,7 @@ public class QuartzServiceImpl implements JobService {
     @Override
     public void deleteJob(JobDeleteTto jobDelteTto) {
         try {
-            getScheduler().deleteJob(new JobKey(jobDelteTto.getName(),jobDelteTto.getGroup()));
+            getScheduler().deleteJob(new JobKey(jobDelteTto.getName(), jobDelteTto.getGroup()));
         } catch (SchedulerException e) {
             throw new ServiceErrorException(e);
         }
@@ -82,13 +83,20 @@ public class QuartzServiceImpl implements JobService {
         JobDetailImpl jobDetail = new JobDetailImpl();
         jobDetail.setName(jobCreateDto.getName());
         jobDetail.setGroup(jobCreateDto.getGroup());
-        jobDetail.setJobClass(LogJob.class);
+        jobDetail.setJobClass(JobType.getJobClass(jobCreateDto));
+        //
+        if (jobCreateDto.getDataMap() != null) {
+            for (Map.Entry<String, Object> entry : jobCreateDto.getDataMap().entrySet()) {
+                jobDetail.getJobDataMap().put(entry.getKey(), entry.getValue());
+            }
+        }
+
         CronTriggerImpl trigger = new CronTriggerImpl();
         trigger.setName(jobDetail.getName());
         trigger.setGroup(jobDetail.getGroup());
         trigger.setJobGroup(jobDetail.getGroup());
         try {
-            trigger.setCronExpression(jobCreateDto.getCronExpression());
+            trigger.setCronExpression(jobCreateDto.getCron());
         } catch (ParseException e) {
             throw new ServiceErrorException(e);
         }
@@ -104,4 +112,5 @@ public class QuartzServiceImpl implements JobService {
         }
         //schedulerFactoryBean.getScheduler().scheduleJob()
     }
+
 }

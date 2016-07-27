@@ -1,12 +1,16 @@
 package com.thoughtworks.lean.quarz.domain;
 
+import java.util.Map;
+
 /**
  * Created by yongliuli on 7/27/16.
  */
 public class JobCreateDto {
     private String name;
     private String group;
-    private String cronExpression;
+    private String cron;
+    private String type;
+    private Map<String,Object> dataMap;
 
     public String getName() {
         return name;
@@ -26,12 +30,30 @@ public class JobCreateDto {
         return this;
     }
 
-    public String getCronExpression() {
-        return cronExpression;
+    public String getCron() {
+        return cron;
     }
 
-    public JobCreateDto setCronExpression(String cronExpression) {
-        this.cronExpression = cronExpression;
+    public JobCreateDto setCron(String cron) {
+        this.cron = cron;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public JobCreateDto setType(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public Map<String, Object> getDataMap() {
+        return dataMap;
+    }
+
+    public JobCreateDto setDataMap(Map<String, Object> dataMap) {
+        this.dataMap = dataMap;
         return this;
     }
 }

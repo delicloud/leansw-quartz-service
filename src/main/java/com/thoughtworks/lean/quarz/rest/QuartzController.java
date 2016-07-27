@@ -5,10 +5,7 @@ import com.thoughtworks.lean.quarz.domain.JobDeleteTto;
 import com.thoughtworks.lean.quarz.domain.JobDetailDto;
 import com.thoughtworks.lean.quarz.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,16 +30,15 @@ public class QuartzController {
     }
 
     @RequestMapping(value = "job", method = RequestMethod.POST)
-    public List<JobDetailDto> addJob(@RequestParam String name, @RequestParam String group, @RequestParam String cron) {
-        JobCreateDto jobCreateDto = new JobCreateDto().setCronExpression(cron).setGroup(group).setName(name);
+    public List<JobDetailDto> addJob(@RequestBody JobCreateDto jobCreateDto) {
         jobService.upsertJob(jobCreateDto);
         return jobService.allJobs();
     }
 
     @RequestMapping(value = "job", method = RequestMethod.DELETE)
     public List<JobDetailDto> delJob(@RequestParam String name, @RequestParam String group) {
-        JobDeleteTto jobCreateDto = new JobDeleteTto().setGroup(group).setName(name);
-        jobService.deleteJob(jobCreateDto);
+        JobDeleteTto jobDeleteTto = new JobDeleteTto().setGroup(group).setName(name);
+        jobService.deleteJob(jobDeleteTto);
         return jobService.allJobs();
     }
 }
