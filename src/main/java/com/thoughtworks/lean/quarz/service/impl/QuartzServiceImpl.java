@@ -1,10 +1,12 @@
 package com.thoughtworks.lean.quarz.service.impl;
 
 import com.thoughtworks.lean.quarz.domain.JobCreateDto;
+import com.thoughtworks.lean.quarz.domain.JobDeleteTto;
 import com.thoughtworks.lean.quarz.domain.JobDetailDto;
 import com.thoughtworks.lean.quarz.exception.ServiceErrorException;
 import com.thoughtworks.lean.quarz.job.LogJob;
 import com.thoughtworks.lean.quarz.service.JobService;
+import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.TriggerKey;
@@ -15,7 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
-import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -67,7 +68,17 @@ public class QuartzServiceImpl implements JobService {
     }
 
     @Override
-    public void addJob(JobCreateDto jobCreateDto) {
+    public void deleteJob(JobDeleteTto jobDelteTto) {
+        try {
+            getScheduler().deleteJob(new JobKey(jobDelteTto.getName(),jobDelteTto.getGroup()));
+        } catch (SchedulerException e) {
+            throw new ServiceErrorException(e);
+        }
+    }
+
+    @Override
+    public void upsertJob(JobCreateDto jobCreateDto) {
+
         JobDetailImpl jobDetail = new JobDetailImpl();
         jobDetail.setName(jobCreateDto.getName());
         jobDetail.setGroup(jobCreateDto.getGroup());
@@ -78,9 +89,18 @@ public class QuartzServiceImpl implements JobService {
         trigger.setJobGroup(jobDetail.getGroup());
         try {
             trigger.setCronExpression(jobCreateDto.getCronExpression());
+        } catch (ParseException e) {
+            throw new ServiceErrorException(e);
+        }
+
+        try {
+            JobKey jobKey = new JobKey(jobCreateDto.getName(), jobCreateDto.getGroup());
+            if (getScheduler().getJobDetail(jobKey) != null) {
+                getScheduler().deleteJob(jobKey);
+            }
             getScheduler().scheduleJob(jobDetail, trigger);
-        } catch (ParseException | SchedulerException e) {
-            LOG.error("cron erro!", e);
+        } catch (SchedulerException e) {
+            LOG.error("schedule cron job error!", e);
         }
         //schedulerFactoryBean.getScheduler().scheduleJob()
     }

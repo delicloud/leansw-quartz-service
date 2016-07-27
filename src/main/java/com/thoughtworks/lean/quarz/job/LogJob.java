@@ -14,6 +14,6 @@ public class LogJob extends QuartzJobBean {
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        LOG.info("simple job is log");
+        LOG.info("simple job name:" + jobExecutionContext.getJobDetail().getKey().getName() + " group:" + jobExecutionContext.getJobDetail().getKey().getGroup());
     }
 }
