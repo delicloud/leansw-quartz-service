@@ -1,9 +1,10 @@
 package com.thoughtworks.lean.quarz.rest;
 
 import com.thoughtworks.lean.quarz.domain.JobCreateDto;
-import com.thoughtworks.lean.quarz.domain.JobDeleteTto;
+import com.thoughtworks.lean.quarz.domain.JobGetTto;
 import com.thoughtworks.lean.quarz.domain.JobDetailDto;
 import com.thoughtworks.lean.quarz.service.JobService;
+import org.kohsuke.randname.RandomNameGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,14 +15,16 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/quartz")
-public class QuartzController {
+public class QuartzApiController {
 
     @Autowired
     JobService jobService;
 
-    @RequestMapping("hello")
+    RandomNameGenerator rnd = new RandomNameGenerator(0);
+
+    @RequestMapping("random")
     public String hello() {
-        return "Hello Quartz!";
+        return rnd.next();
     }
 
     @RequestMapping("jobs")
@@ -37,7 +40,7 @@ public class QuartzController {
 
     @RequestMapping(value = "job", method = RequestMethod.DELETE)
     public List<JobDetailDto> delJob(@RequestParam String name, @RequestParam String group) {
-        JobDeleteTto jobDeleteTto = new JobDeleteTto().setGroup(group).setName(name);
+        JobGetTto jobDeleteTto = new JobGetTto().setGroup(group).setName(name);
         jobService.deleteJob(jobDeleteTto);
         return jobService.allJobs();
     }

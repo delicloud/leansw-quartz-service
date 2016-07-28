@@ -1,7 +1,7 @@
 package com.thoughtworks.lean.quarz.service;
 
 import com.thoughtworks.lean.quarz.domain.JobCreateDto;
-import com.thoughtworks.lean.quarz.domain.JobDeleteTto;
+import com.thoughtworks.lean.quarz.domain.JobGetTto;
 import com.thoughtworks.lean.quarz.domain.JobDetailDto;
 
 import java.util.List;
@@ -14,5 +14,7 @@ public interface JobService {
 
     void upsertJob(JobCreateDto jobCreateDto);
 
-    void deleteJob(JobDeleteTto jobDelteTto);
+    void deleteJob(JobGetTto jobDelteTto);
+
+    JobDetailDto getJob(JobGetTto jobGetTto);
 }

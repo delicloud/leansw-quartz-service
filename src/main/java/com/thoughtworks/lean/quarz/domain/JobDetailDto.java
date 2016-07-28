@@ -21,6 +21,7 @@ public class JobDetailDto {
     private boolean shouldRecover;
     private transient JobKey key;
     private String cronExpression;
+    private String type;
 
     public String getCronExpression() {
         return cronExpression;
@@ -111,6 +112,15 @@ public class JobDetailDto {
 
     public JobDetailDto setKey(JobKey key) {
         this.key = key;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public JobDetailDto setType(String type) {
+        this.type = type;
         return this;
     }
 }

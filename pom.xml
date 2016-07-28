@@ -95,6 +95,12 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.kohsuke/wordnet-random-name -->
+        <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>wordnet-random-name</artifactId>
+            <version>1.2</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -141,7 +147,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>2.2.0</version>
+            <version>3.0.0</version>
         </dependency>
 
         <dependency>
@@ -149,7 +155,11 @@
             <artifactId>bootstrap</artifactId>
             <version>3.3.7</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>handlebars</artifactId>
+            <version>4.0.5</version>
+        </dependency>
 
         <dependency>
             <groupId>net.sourceforge.nekohtml</groupId>

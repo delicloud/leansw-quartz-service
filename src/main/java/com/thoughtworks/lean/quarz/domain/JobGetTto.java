@@ -3,7 +3,7 @@ package com.thoughtworks.lean.quarz.domain;
 /**
  * Created by yongliuli on 7/27/16.
  */
-public class JobDeleteTto {
+public class JobGetTto {
     private String name;
     private String group;
 
@@ -11,7 +11,7 @@ public class JobDeleteTto {
         return name;
     }
 
-    public JobDeleteTto setName(String name) {
+    public JobGetTto setName(String name) {
         this.name = name;
         return this;
     }
@@ -20,7 +20,7 @@ public class JobDeleteTto {
         return group;
     }
 
-    public JobDeleteTto setGroup(String group) {
+    public JobGetTto setGroup(String group) {
         this.group = group;
         return this;
     }

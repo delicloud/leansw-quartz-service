@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: quartz
+encrypt:
+  failOnError: false
