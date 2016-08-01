@@ -1,3 +1,20 @@
 [
-
+  {
+    "name": "identity-fetch-data",
+    "group": "leansw",
+    "description": null,
+    "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
+    "jobDataMap": {
+      "leansw_quartz_job_api_url": "http://identity/api/identity/pipelines",
+      "leansw_quartz_job_type": "API"
+    },
+    "durability": false,
+    "shouldRecover": false,
+    "key": {
+      "name": "identity-fetch-data",
+      "group": "leansw"
+    },
+    "cron": "0 0/5 * 1/1 * ? *",
+    "type": "API"
+  }
 ]

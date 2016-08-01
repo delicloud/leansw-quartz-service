@@ -1,5 +1,7 @@
 package com.thoughtworks.lean.quartz.service.impl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.io.Resources;
 import com.thoughtworks.lean.quartz.domain.JobCreateDto;
 import com.thoughtworks.lean.quartz.domain.JobGetTto;
 import com.thoughtworks.lean.quartz.domain.JobDetailDto;
@@ -7,6 +9,7 @@ import com.thoughtworks.lean.quartz.exception.ServiceErrorException;
 import com.thoughtworks.lean.quartz.job.AbstractJob;
 import com.thoughtworks.lean.quartz.job.JobType;
 import com.thoughtworks.lean.quartz.service.JobService;
+import com.thoughtworks.lean.quartz.util.JSONUtil;
 import org.quartz.*;
 import org.quartz.impl.JobDetailImpl;
 import org.quartz.impl.matchers.GroupMatcher;
@@ -14,14 +17,18 @@ import org.quartz.impl.triggers.CronTriggerImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static com.google.common.base.Charsets.UTF_8;
 
 /**
  * Created by yongliuli on 7/27/16.
@@ -34,6 +41,22 @@ public class QuartzServiceImpl implements JobService {
     @Autowired
     SchedulerFactoryBean schedulerFactoryBean;
 
+
+    @Value("${quartz.defaultJobsFile}")
+    String defaultJobFiles;
+
+    @Override
+    public void init() {
+
+        try {
+            String jsonServicesResponse = Resources.toString(this.getClass().getResource("/default_jobs.json"), UTF_8);
+            List<JobCreateDto> jobDetailDtos = JSONUtil.parseJSON(jsonServicesResponse, new TypeReference<List<JobCreateDto>>() {
+            });
+            jobDetailDtos.forEach(this::upsertJob);
+        } catch (IOException e) {
+            throw new ServiceErrorException(e);
+        }
+    }
 
     @Override
     public List<JobDetailDto> allJobs() {

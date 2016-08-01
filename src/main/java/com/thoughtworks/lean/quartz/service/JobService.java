@@ -17,4 +17,6 @@ public interface JobService {
     void deleteJob(JobGetTto jobDelteTto);
 
     JobDetailDto getJob(JobGetTto jobGetTto);
+
+    void init();
 }

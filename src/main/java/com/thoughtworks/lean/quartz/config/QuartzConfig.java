@@ -27,6 +27,8 @@ public class QuartzConfig {
     @Autowired
     private Environment environment;
 
+
+
     @Bean(name = "cronTaskExecutor")
     public ThreadPoolTaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();

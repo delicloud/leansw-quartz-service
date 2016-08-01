@@ -6,6 +6,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.function.Predicate;
+
 @Configuration
 @EnableEurekaClient
 @EnableFeignClients
@@ -14,6 +16,14 @@ import org.springframework.context.annotation.Configuration;
 public class EurekaConfig {
     @Override
     public String toString() {
+
+        new Predicate<Integer>(){
+
+            @Override
+            public boolean test(Integer n) {
+                return n>3;
+            }
+        };
         return "EurekaConfig{}";
     }
 
