@@ -1,9 +1,9 @@
-package com.thoughtworks.lean.quarz.rest;
+package com.thoughtworks.lean.quartz.rest;
 
-import com.thoughtworks.lean.quarz.domain.JobCreateDto;
-import com.thoughtworks.lean.quarz.domain.JobGetTto;
-import com.thoughtworks.lean.quarz.domain.JobDetailDto;
-import com.thoughtworks.lean.quarz.service.JobService;
+import com.thoughtworks.lean.quartz.domain.JobCreateDto;
+import com.thoughtworks.lean.quartz.domain.JobGetTto;
+import com.thoughtworks.lean.quartz.domain.JobDetailDto;
+import com.thoughtworks.lean.quartz.service.JobService;
 import org.kohsuke.randname.RandomNameGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

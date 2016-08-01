@@ -1,12 +1,12 @@
-package com.thoughtworks.lean.quarz.service.impl;
+package com.thoughtworks.lean.quartz.service.impl;
 
-import com.thoughtworks.lean.quarz.domain.JobCreateDto;
-import com.thoughtworks.lean.quarz.domain.JobGetTto;
-import com.thoughtworks.lean.quarz.domain.JobDetailDto;
-import com.thoughtworks.lean.quarz.exception.ServiceErrorException;
-import com.thoughtworks.lean.quarz.job.AbstractJob;
-import com.thoughtworks.lean.quarz.job.JobType;
-import com.thoughtworks.lean.quarz.service.JobService;
+import com.thoughtworks.lean.quartz.domain.JobCreateDto;
+import com.thoughtworks.lean.quartz.domain.JobGetTto;
+import com.thoughtworks.lean.quartz.domain.JobDetailDto;
+import com.thoughtworks.lean.quartz.exception.ServiceErrorException;
+import com.thoughtworks.lean.quartz.job.AbstractJob;
+import com.thoughtworks.lean.quartz.job.JobType;
+import com.thoughtworks.lean.quartz.service.JobService;
 import org.quartz.*;
 import org.quartz.impl.JobDetailImpl;
 import org.quartz.impl.matchers.GroupMatcher;

@@ -1,6 +1,6 @@
-package com.thoughtworks.lean.quarz.job;
+package com.thoughtworks.lean.quartz.job;
 
-import com.thoughtworks.lean.quarz.domain.JobCreateDto;
+import com.thoughtworks.lean.quartz.domain.JobCreateDto;
 
 /**
  * Created by yongliuli on 7/27/16.

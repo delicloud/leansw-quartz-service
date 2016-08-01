@@ -1,16 +1,13 @@
-package com.thoughtworks.lean.quarz.ui;
+package com.thoughtworks.lean.quartz.ui;
 
-import com.thoughtworks.lean.quarz.domain.JobCreateDto;
-import com.thoughtworks.lean.quarz.domain.JobGetTto;
-import com.thoughtworks.lean.quarz.domain.JobDetailDto;
-import com.thoughtworks.lean.quarz.service.JobService;
+import com.thoughtworks.lean.quartz.domain.JobCreateDto;
+import com.thoughtworks.lean.quartz.domain.JobGetTto;
+import com.thoughtworks.lean.quartz.domain.JobDetailDto;
+import com.thoughtworks.lean.quartz.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 

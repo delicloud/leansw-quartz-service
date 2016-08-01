@@ -1,4 +1,4 @@
-package com.thoughtworks.lean.quarz.domain;
+package com.thoughtworks.lean.quartz.domain;
 
 import org.quartz.Job;
 import org.quartz.JobDataMap;

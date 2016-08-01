@@ -1,7 +1,5 @@
 package com.thoughtworks.lean.quartz.job;
 
-import com.thoughtworks.lean.quarz.job.APIJob;
-import com.thoughtworks.lean.quarz.job.JobType;
 import org.junit.Assert;
 import org.junit.Test;
 

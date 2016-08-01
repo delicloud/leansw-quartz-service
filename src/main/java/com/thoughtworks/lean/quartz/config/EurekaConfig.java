@@ -1,4 +1,4 @@
-package com.thoughtworks.lean.quarz.config;
+package com.thoughtworks.lean.quartz.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

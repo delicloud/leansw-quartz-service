@@ -1,4 +1,4 @@
-package com.thoughtworks.lean.quarz.exception;
+package com.thoughtworks.lean.quartz.exception;
 
 /**
  * Created by yongliuli on 7/27/16.

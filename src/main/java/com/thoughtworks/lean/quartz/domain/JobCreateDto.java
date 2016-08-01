@@ -1,4 +1,4 @@
-package com.thoughtworks.lean.quarz.domain;
+package com.thoughtworks.lean.quartz.domain;
 
 import java.util.Map;
 

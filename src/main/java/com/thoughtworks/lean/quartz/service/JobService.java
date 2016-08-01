@@ -1,8 +1,8 @@
-package com.thoughtworks.lean.quarz.service;
+package com.thoughtworks.lean.quartz.service;
 
-import com.thoughtworks.lean.quarz.domain.JobCreateDto;
-import com.thoughtworks.lean.quarz.domain.JobGetTto;
-import com.thoughtworks.lean.quarz.domain.JobDetailDto;
+import com.thoughtworks.lean.quartz.domain.JobCreateDto;
+import com.thoughtworks.lean.quartz.domain.JobGetTto;
+import com.thoughtworks.lean.quartz.domain.JobDetailDto;
 
 import java.util.List;
 

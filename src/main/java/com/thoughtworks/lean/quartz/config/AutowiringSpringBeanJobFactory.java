@@ -1,4 +1,4 @@
-package com.thoughtworks.lean.quarz.config;
+package com.thoughtworks.lean.quartz.config;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;

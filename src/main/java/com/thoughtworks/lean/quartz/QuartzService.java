@@ -1,10 +1,8 @@
-package com.thoughtworks.lean.quarz;
+package com.thoughtworks.lean.quartz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by yongliuli on 7/27/16.

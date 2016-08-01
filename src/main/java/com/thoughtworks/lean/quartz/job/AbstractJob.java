@@ -1,4 +1,4 @@
-package com.thoughtworks.lean.quarz.job;
+package com.thoughtworks.lean.quartz.job;
 
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

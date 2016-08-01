@@ -12,3 +12,5 @@ eureka:
     preferIpAddress: true
 
 spring.thymeleaf.cache: false
+quartz:
+  defaultJobsFile: classpath:/default_jobs.json

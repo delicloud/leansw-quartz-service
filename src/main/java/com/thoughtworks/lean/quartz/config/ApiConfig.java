@@ -1,4 +1,4 @@
-package com.thoughtworks.lean.quarz.config;
+package com.thoughtworks.lean.quartz.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

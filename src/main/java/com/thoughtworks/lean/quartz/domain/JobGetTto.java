@@ -1,4 +1,4 @@
-package com.thoughtworks.lean.quarz.domain;
+package com.thoughtworks.lean.quartz.domain;
 
 /**
  * Created by yongliuli on 7/27/16.
