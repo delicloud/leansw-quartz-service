@@ -41,7 +41,7 @@
     "description": null,
     "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
     "jobDataMap": {
-      "leansw_quartz_job_api_url": "http://identity/api/identity/pipelines",
+      "leansw_quartz_job_api_url": "http://identity/api/identity/pipelines/fetch_data",
       "leansw_quartz_job_type": "API"
     },
     "durability": false,
