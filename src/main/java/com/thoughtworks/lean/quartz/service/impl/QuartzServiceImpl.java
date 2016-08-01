@@ -82,7 +82,7 @@ public class QuartzServiceImpl implements JobService {
             try {
                 JobDetailDto jobDetailDto = new JobDetailDto(jobDetail);
                 CronTriggerImpl cronTrigger = (CronTriggerImpl) getScheduler().getTrigger(new TriggerKey(jobDetailDto.getName(), jobDetailDto.getGroup()));
-                jobDetailDto.setCronExpression(cronTrigger.getCronExpression());
+                jobDetailDto.setCron(cronTrigger.getCronExpression());
                 jobDetailDto.setType(jobDetailDto.getJobDataMap().getString(AbstractJob.KEY_JOB_TYPE));
                 return jobDetailDto;
             } catch (SchedulerException e) {

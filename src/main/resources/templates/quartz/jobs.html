@@ -28,7 +28,7 @@
                 <tr th:each="job : ${jobs}" class="job-item">
                     <td th:text="${job.name}" class="job-name">name</td>
                     <td th:text="${job.group}" class="job-group">group</td>
-                    <td th:text="${job.cronExpression}" class="job-cron">cron</td>
+                    <td th:text="${job.cron}" class="job-cron">cron</td>
                     <td th:text="${job.type}" class="job-type">type</td>
                     <td class="job-data-map" th:attr="api-url=${job.jobDataMap['leansw_quartz_job_api_url']}">
                         <p  class="api-url" th:if="${#maps.containsKey(job.jobDataMap, 'leansw_quartz_job_api_url')}"

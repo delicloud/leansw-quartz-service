@@ -1,5 +1,41 @@
 [
   {
+    "name": "cd-metrics-merge-history",
+    "group": "leansw",
+    "description": null,
+    "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
+    "jobDataMap": {
+      "leansw_quartz_job_api_url": "http://cd-metrics/api/cd-metrics/histories/auto_merge",
+      "leansw_quartz_job_type": "API"
+    },
+    "durability": false,
+    "shouldRecover": false,
+    "key": {
+      "name": "cd-metrics-merge-history",
+      "group": "leansw"
+    },
+    "cron": "0 0/10 * 1/1 * ? *",
+    "type": "API"
+  },
+  {
+    "name": "cd-metrics-agents-auto-scale",
+    "group": "leansw",
+    "description": null,
+    "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
+    "jobDataMap": {
+      "leansw_quartz_job_api_url": "http://cd-metrics/api/cd-metrics/agent/auto_scale",
+      "leansw_quartz_job_type": "API"
+    },
+    "durability": false,
+    "shouldRecover": false,
+    "key": {
+      "name": "cd-metrics-agents-auto-scale",
+      "group": "leansw"
+    },
+    "cron": "0 0/10 * 1/1 * ? *",
+    "type": "API"
+  },
+  {
     "name": "identity-fetch-data",
     "group": "leansw",
     "description": null,
@@ -15,6 +51,60 @@
       "group": "leansw"
     },
     "cron": "0 0/5 * 1/1 * ? *",
+    "type": "API"
+  },
+  {
+    "name": "cd-metrics-daily-commits",
+    "group": "leansw",
+    "description": null,
+    "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
+    "jobDataMap": {
+      "leansw_quartz_job_api_url": "http://cd-metrics/api/cd-metrics/stat/daily_commits",
+      "leansw_quartz_job_type": "API"
+    },
+    "durability": false,
+    "shouldRecover": false,
+    "key": {
+      "name": "cd-metrics-daily-commits",
+      "group": "leansw"
+    },
+    "cron": "0 0/10 * 1/1 * ? *",
+    "type": "API"
+  },
+  {
+    "name": "code-metrics-sync-code-quality",
+    "group": "leansw",
+    "description": null,
+    "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
+    "jobDataMap": {
+      "leansw_quartz_job_api_url": "http://code-metrics/api/code-metrics/code-quality/sync",
+      "leansw_quartz_job_type": "API"
+    },
+    "durability": false,
+    "shouldRecover": false,
+    "key": {
+      "name": "code-metrics-sync-code-quality",
+      "group": "leansw"
+    },
+    "cron": "0 0/10 * 1/1 * ? *",
+    "type": "API"
+  },
+  {
+    "name": "cd-metrics-daily-builds",
+    "group": "leansw",
+    "description": null,
+    "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
+    "jobDataMap": {
+      "leansw_quartz_job_api_url": "http://cd-metrics/api/cd-metrics/stat/daily_builds",
+      "leansw_quartz_job_type": "API"
+    },
+    "durability": false,
+    "shouldRecover": false,
+    "key": {
+      "name": "cd-metrics-daily-builds",
+      "group": "leansw"
+    },
+    "cron": "0 0/10 * 1/1 * ? *",
     "type": "API"
   }
 ]

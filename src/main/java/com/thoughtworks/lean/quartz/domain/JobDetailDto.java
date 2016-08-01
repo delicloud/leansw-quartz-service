@@ -20,15 +20,15 @@ public class JobDetailDto {
     private boolean durability;
     private boolean shouldRecover;
     private transient JobKey key;
-    private String cronExpression;
+    private String cron;
     private String type;
 
-    public String getCronExpression() {
-        return cronExpression;
+    public String getCron() {
+        return cron;
     }
 
-    public JobDetailDto setCronExpression(String cronExpression) {
-        this.cronExpression = cronExpression;
+    public JobDetailDto setCron(String cron) {
+        this.cron = cron;
         return this;
     }
 
