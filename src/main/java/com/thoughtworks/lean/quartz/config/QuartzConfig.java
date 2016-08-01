@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -71,6 +72,7 @@ public class QuartzConfig {
 
         resources.add(new ClassPathResource("/quartz.properties"));
         resources.addAll(profileResources);
+
 
         return resources.toArray(new ClassPathResource[resources.size()]);
     }
