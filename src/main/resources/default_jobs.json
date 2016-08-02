@@ -4,7 +4,7 @@
     "group": "leansw",
     "description": null,
     "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
-    "jobDataMap": {
+    "dataMap": {
       "leansw_quartz_job_api_url": "http://cd-metrics/api/cd-metrics/histories/auto_merge",
       "leansw_quartz_job_type": "API"
     },
@@ -22,7 +22,7 @@
     "group": "leansw",
     "description": null,
     "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
-    "jobDataMap": {
+    "dataMap": {
       "leansw_quartz_job_api_url": "http://cd-metrics/api/cd-metrics/agent/auto_scale",
       "leansw_quartz_job_type": "API"
     },
@@ -40,7 +40,7 @@
     "group": "leansw",
     "description": null,
     "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
-    "jobDataMap": {
+    "dataMap": {
       "leansw_quartz_job_api_url": "http://identity/api/identity/pipelines/fetch_data",
       "leansw_quartz_job_type": "API"
     },
@@ -58,7 +58,7 @@
     "group": "leansw",
     "description": null,
     "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
-    "jobDataMap": {
+    "dataMap": {
       "leansw_quartz_job_api_url": "http://cd-metrics/api/cd-metrics/stat/daily_commits",
       "leansw_quartz_job_type": "API"
     },
@@ -76,7 +76,7 @@
     "group": "leansw",
     "description": null,
     "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
-    "jobDataMap": {
+    "dataMap": {
       "leansw_quartz_job_api_url": "http://code-metrics/api/code-metrics/code-quality/sync",
       "leansw_quartz_job_type": "API"
     },
@@ -94,7 +94,7 @@
     "group": "leansw",
     "description": null,
     "jobClass": "com.thoughtworks.lean.quartz.job.APIJob",
-    "jobDataMap": {
+    "dataMap": {
       "leansw_quartz_job_api_url": "http://cd-metrics/api/cd-metrics/stat/daily_builds",
       "leansw_quartz_job_type": "API"
     },
