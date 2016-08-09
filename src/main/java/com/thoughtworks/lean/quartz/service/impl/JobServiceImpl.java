@@ -34,9 +34,9 @@ import static com.google.common.base.Charsets.UTF_8;
  * Created by yongliuli on 7/27/16.
  */
 @Service
-public class QuartzServiceImpl implements JobService {
+public class JobServiceImpl implements JobService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(QuartzServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JobServiceImpl.class);
 
     @Autowired
     SchedulerFactoryBean schedulerFactoryBean;
