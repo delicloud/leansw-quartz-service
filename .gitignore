@@ -3,6 +3,7 @@
 .metadata
 .gradle
 bin/
+src/main/docker/lib
 tmp/
 *.tmp
 *.bak

@@ -1,9 +1,9 @@
-FROM registry.aliyuncs.com/leansw/quartz-service:dep
-
-VOLUME /tmp
-ADD entrypoint.sh entrypoint.sh
-ADD quartz-service-1.0-SNAPSHOT.jar quartz-service.jar
-RUN bash -c 'touch /quartz-service.jar'
-RUN chmod +x entrypoint.sh
-EXPOSE 2400
-ENTRYPOINT ["./entrypoint.sh"]
+FROM java:8-alpine
+RUN apk add --no-cache bash && \
+    apk add --no-cache curl
+EXPOSE 9005
+COPY lib /lean/java/lib
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT sh /entrypoint.sh
+ADD quartz-service-1.0-SNAPSHOT.jar /quartz-service.jar
