@@ -11,32 +11,21 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
-
 /**
  * Created by yongliuli on 7/27/16.
  */
-public class APIJob extends AbstractJob {
+public class ExtAPIJob extends AbstractJob {
 
     private static final Logger LOG = LoggerFactory.getLogger(LogJob.class);
-
-    @Resource(name = "apiRestTemplate")
-    RestTemplate restTemplate;
-
-    @Autowired
-    EurekaClient eurekaClient;
     private final static String KEY_API_URL = "leansw_quartz_job_api_url";
+    RestTemplate extRestTemplate = new RestTemplate();
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         String apiUrl = jobExecutionContext.getJobDetail().getJobDataMap().getString(KEY_API_URL);
-        LOG.info("call api:" + apiUrl);
-        try {
-            ResponseEntity<String> ret = restTemplate.exchange(apiUrl, HttpMethod.GET, new HttpEntity<>(""), String.class);
-            LOG.info("response:\n" + ret.getBody());
-        } catch (IllegalStateException e) {
-            LOG.info("default rest template error!:\n", e);
-        }
+        LOG.info("call ext api:" + apiUrl);
+        ResponseEntity<String> ret = extRestTemplate.exchange(apiUrl, HttpMethod.GET, new HttpEntity<>(""), String.class);
+        LOG.info("response:\n" + ret.getBody());
 
     }
 }

@@ -7,7 +7,9 @@ import com.thoughtworks.lean.quartz.domain.JobCreateDto;
  */
 public enum JobType {
     LOG("LOG", LogJob.class),
-    API("API", APIJob.class);
+    API("API", APIJob.class),
+    EXTAPI("EXTAPI",ExtAPIJob.class);
+
     private Class jobClass;
     private String value;
 
