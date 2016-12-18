@@ -35,23 +35,5 @@ public class QuartzUIController {
         return new ModelAndView("quartz/jobs", "jobs", jobService.allJobs());
     }
 
-    @RequestMapping(value = "job/post")
-    public List<JobDetailDto> addJob(@RequestBody JobCreateDto jobCreateDto) {
-        jobService.upsertJob(jobCreateDto);
-        return jobService.allJobs();
-    }
-
-    @RequestMapping(value = "job/get")
-    public JobDetailDto addJob(@RequestParam String name, @RequestParam String group) {
-        JobGetTto jobGetTto = new JobGetTto().setGroup(group).setName(name);
-        return jobService.getJob(jobGetTto);
-    }
-
-    @RequestMapping(value = "job/delete")
-    public void delJob(@RequestParam String name, @RequestParam String group, HttpServletResponse response) throws IOException {
-        JobGetTto jobDeleteTto = new JobGetTto().setGroup(group).setName(name);
-        jobService.deleteJob(jobDeleteTto);
-        response.sendRedirect("/ui/quartz/jobs");
-    }
 
 }
