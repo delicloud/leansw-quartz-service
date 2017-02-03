@@ -18,9 +18,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
@@ -41,6 +46,9 @@ public class JobServiceImpl implements JobService {
     @Autowired
     SchedulerFactoryBean schedulerFactoryBean;
 
+    @Resource(name = "apiRestTemplate")
+    RestTemplate restTemplate;
+
 
     @Value("${quartz.defaultJobsFile}")
     String defaultJobFiles;
@@ -55,6 +63,25 @@ public class JobServiceImpl implements JobService {
             jobDetailDtos.forEach(this::upsertJob);
         } catch (IOException e) {
             throw new ServiceErrorException(e);
+        }
+    }
+
+    @Override
+    public void executeJob(JobGetTto jobGetTto) {
+        JobDetail jobDetailDto = null;
+        try {
+            jobDetailDto = getScheduler().getJobDetail(new JobKey(jobGetTto.getName(), jobGetTto.getGroup()));
+            String jobUrl = jobDetailDto.getJobDataMap().getString("leansw_quartz_job_api_url");
+            LOG.info("call api:" + jobUrl);
+            try {
+                ResponseEntity<String> ret = restTemplate.exchange(jobUrl, HttpMethod.GET, new HttpEntity<>(""), String.class);
+                LOG.info("response:\n" + ret.getBody());
+            } catch (IllegalStateException e) {
+                LOG.info("default rest template error!:\n", e);
+            }
+
+        } catch (SchedulerException e) {
+            e.printStackTrace();
         }
     }
 

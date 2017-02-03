@@ -19,4 +19,6 @@ public interface JobService {
     JobDetailDto getJob(JobGetTto jobGetTto);
 
     void init();
+
+    void executeJob(JobGetTto jobGetTto);
 }

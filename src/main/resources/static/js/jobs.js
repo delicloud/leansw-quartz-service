@@ -4,6 +4,8 @@ $(function(){
 //
     var editModalTemplate ;
 
+    var execModalTemplate ;
+
     $.ajax({
         url: "/xht/delete.xhtml",
         method: 'GET',
@@ -19,6 +21,15 @@ $(function(){
         dataType: "text",
         success: function(data){
             editModalTemplate = Handlebars.compile(data);
+        }
+    });
+
+    $.ajax({
+        url: "/xht/exec.xhtml",
+        method: 'GET',
+        dataType: "text",
+        success: function(data){
+            execModalTemplate = Handlebars.compile(data);
         }
     });
 
@@ -55,12 +66,38 @@ $(function(){
         setTimeout(function(){$("#editModal").modal("show")},200);
     });
 
+    // exec job
+    $(".exec-job").click(function(e){
+        //
+        $("#execModal").remove();
+        var parentTr = $(e.target).parents("tr");
+        var selectJob = {
+            name: parentTr.find(".job-name").html(),
+            group: parentTr.find(".job-group").html(),
+            cron: parentTr.find(".job-cron").html(),
+            type: parentTr.find(".job-type").html(),
+            apiUrl: parentTr.find(".job-data-map").attr("api-url")
+        }
+        $("#modalContainder").append(execModalTemplate(selectJob));
+        setTimeout(function(){$("#execModal").modal("show")},200);
+    });
+
 
 
     $("body").on("click","#job-del-confirm",function(){
         $.ajax({
             type: "DELETE",
             url: "/api/quartz/job?name="+$("#deleteModal input[name='name']").val()+"&group="+$("#deleteModal input[name='group']").val(),
+            success: function(){
+                location.reload();
+            }
+        });
+    });
+
+    $("body").on("click","#job-exec-confirm",function(){
+        $.ajax({
+            type: "POST",
+            url: "/api/quartz/job_exec?name="+$("#execModal input[name='name']").val()+"&group="+$("#execModal input[name='group']").val(),
             success: function(){
                 location.reload();
             }

@@ -46,6 +46,13 @@ public class QuartzApiController {
         return jobService.allJobs();
     }
 
+    @RequestMapping(value = "job_exec", method = RequestMethod.POST)
+    public List<JobDetailDto> ExecuteJob(@RequestParam String name, @RequestParam String group) {
+        JobGetTto jobExecDto = new JobGetTto().setGroup(group).setName(name);
+        jobService.executeJob(jobExecDto);
+        return jobService.allJobs();
+    }
+
     @RequestMapping(value = "job", method = RequestMethod.DELETE)
     public List<JobDetailDto> delJob(@RequestParam String name, @RequestParam String group) {
         JobGetTto jobDeleteTto = new JobGetTto().setGroup(group).setName(name);
