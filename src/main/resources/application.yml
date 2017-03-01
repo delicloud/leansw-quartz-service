@@ -2,6 +2,8 @@ debug: true
 
 server:
   port: 9005
+  error:
+    include-stacktrace: always
 
 eureka:
   enabled: true
