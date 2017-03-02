@@ -1,5 +1,0 @@
-debug: true
-quartz:
-  jobStore:
-    dbName: deliflow-jobs-quartz-docker
-
