@@ -6,16 +6,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Properties;
-import java.util.stream.Collectors;
 
 /**
  * Created by yongliuli on 7/27/16.
@@ -51,20 +46,12 @@ public class QuartzConfig {
     @Bean
     public Properties quartzProperties() throws IOException {
 
-        /*
-        ClassPathResource[] resources = getQuartzPropertiesByActiveProfile();
-        PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
-        propertiesFactoryBean.setLocations(resources);
-        propertiesFactoryBean.afterPropertiesSet();
-        return propertiesFactoryBean.getObject();
-        */
         Properties properties = new Properties();
         properties.put("org.quartz.jobStore.class", environment.getProperty("quartz.jobStore.class"));
         properties.put("org.quartz.jobStore.mongoUri", environment.getProperty("quartz.jobStore.mongoUri"));
         properties.put("org.quartz.jobStore.dbName", environment.getProperty("quartz.jobStore.dbName"));
         properties.put("org.quartz.jobStore.collectionPrefix", environment.getProperty("quartz.jobStore.collectionPrefix"));
         properties.put("org.quartz.threadPool.threadCount", environment.getProperty("quartz.threadPool.threadCount"));
-
         return properties;
     }
 
@@ -76,17 +63,5 @@ public class QuartzConfig {
         return jobFactory;
     }
 
-    private ClassPathResource[] getQuartzPropertiesByActiveProfile() {
-        List<ClassPathResource> resources = new ArrayList<>();
-        List<ClassPathResource> profileResources = Arrays.asList(environment.getActiveProfiles()).stream()
-                .map(profile -> new ClassPathResource(String.format("/quartz-%s.properties", profile)))
-                .filter(ClassPathResource::exists)
-                .collect(Collectors.toList());
 
-        resources.add(new ClassPathResource("/quartz.properties"));
-        resources.addAll(profileResources);
-
-
-        return resources.toArray(new ClassPathResource[resources.size()]);
-    }
 }
