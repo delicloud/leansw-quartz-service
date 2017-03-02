@@ -10,8 +10,10 @@ import com.thoughtworks.lean.quartz.util.JSONUtil;
 import org.kohsuke.randname.RandomNameGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -26,6 +28,9 @@ public class QuartzApiController {
 
     @Autowired
     JobService jobService;
+
+    @Autowired
+    private Environment environment;
 
 
     RandomNameGenerator rnd = new RandomNameGenerator(0);
@@ -64,5 +69,11 @@ public class QuartzApiController {
     public List<JobDetailDto> init() throws IOException {
         jobService.init();
         return jobService.allJobs();
+    }
+
+
+    @RequestMapping(value = "test", method = RequestMethod.POST)
+    private Model test(@Valid @RequestBody Model p) {
+        return p;
     }
 }

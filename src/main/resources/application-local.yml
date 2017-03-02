@@ -1,0 +1,15 @@
+debug: true
+
+eureka:
+  enabled: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: true
+
+spring.thymeleaf.cache: false
+
+jobStore:
+    mongoUri: mongodb://deliflow:Leanswdev1@mongo-server:27017
+    dbName: deliflow-jobs-quartz-local

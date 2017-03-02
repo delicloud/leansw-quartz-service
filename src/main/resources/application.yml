@@ -1,0 +1,26 @@
+debug: true
+
+server:
+  port: 9005
+  error:
+    include-stacktrace: always
+
+eureka:
+  enabled: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    preferIpAddress: true
+
+spring.thymeleaf.cache: false
+quartz:
+  defaultJobsFile: classpath:/default_jobs.json
+  jobStore:
+    class: com.novemberain.quartz.mongodb.MongoDBJobStore
+    mongoUri: mongodb://deliflow:Leanswdev1@mongo-server:27017
+    dbName: deliflow-jobs-quartz
+    collectionPrefix: deliflow
+  threadPool:
+    threadCount: 1
+
