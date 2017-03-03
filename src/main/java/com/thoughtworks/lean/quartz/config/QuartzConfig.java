@@ -12,9 +12,6 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * Created by yongliuli on 7/27/16.
- */
 @Configuration
 public class QuartzConfig {
     @Autowired
