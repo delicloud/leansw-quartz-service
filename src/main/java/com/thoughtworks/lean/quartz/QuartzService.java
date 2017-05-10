@@ -1,4 +1,4 @@
-package com.thoughtworks.lean;
+package com.thoughtworks.lean.quartz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
