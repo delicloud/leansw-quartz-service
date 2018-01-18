@@ -6,4 +6,4 @@ ROOT_PATH=${GOCD_SERVER_ROOT:=/go}
 USERNAME=${GOCD_USERNAME:=admin}
 PASSWORD=${GOCD_PASSWORD:=badger}
 
-java -Xmx512m -Djava.security.egd=file:/dev/./urandom  -cp $JAVA_HOME/lib/*:/lean/java/lib/*:/quartz-service.jar com.thoughtworks.lean.QuartzService --spring.profiles.active=$PROFILE --gocd.server.host=http://$HOST:$PORT$ROOT_PATH --gocd.server.username=$USERNAME --gocd.server.password=$PASSWORD
+java -Xmx512m -Djava.security.egd=file:/dev/./urandom  -jar /quartz-service.jar --spring.profiles.active=$PROFILE --gocd.server.host=http://$HOST:$PORT$ROOT_PATH --gocd.server.username=$USERNAME --gocd.server.password=$PASSWORD
