@@ -5,4 +5,3 @@ ADD *.jar /quartz-service.jar
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT sh /entrypoint.sh
-ADD quartz-service-*-SNAPSHOT.jar /quartz-service.jar
